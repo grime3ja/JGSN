@@ -1,0 +1,15 @@
+header {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 3px solid black;
+}
+
+footer {
+    position: fixed;
+    width: 100%;
+    bottom: 10px;
+    border-top: 3px solid black;
+}
