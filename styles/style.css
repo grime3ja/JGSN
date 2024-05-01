@@ -31,6 +31,9 @@ main {
         display: flex;
         align-self: center;
         flex-direction: row;
+        h3 {
+            text-align: center;
+        }
     }
 }
 
