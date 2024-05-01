@@ -25,7 +25,30 @@
 </header>
 <main>
   <body>
-    <h2>Search Team</h2>
+    <form class="search" role="search">
+      <input type="search" id="search-bar" name="search" type="search" placeholder="Search Team" aria-label="Search Team">
+      <button id="search-button" name="button" type="button" onclick="searchTeamPressed()">Go!</button>
+    </form>
+    <div id="article-aside">
+      <article>
+        <div id="big-flex">
+          <figure>
+            <img src="images/nfl-logo.png" alt="NFL Logo" height="200px" width="200px">
+          </figure>
+          <div class="team-info" id="team-info">
+            <p>Team Name:</p>
+            <p>City:</p>
+            <p>Established:</p>
+            <p>Stadium:</p>
+            <p>Owner:</p>
+            <p>Coach:</p>
+          </div>
+        </div>
+        <div id="button">
+          <button id="favorite-button" name="button" type="button" onclick="favoritePressed()">Favorite Team</button>
+        </div>
+      </article>
+    </div>
     <script src="scripts/script.js"></script>
   </body>
 </main>

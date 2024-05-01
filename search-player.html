@@ -24,8 +24,35 @@
   </nav>
 </header>
 <main>
-  <body>
-    <h2>Search Player</h2>
+  <body id="player">
+    <!-- <h2>Search Player</h2> -->
+    <form class="search" role="search">
+      <input type="search" id="search-bar" name="search" type="search" placeholder="Search Player" aria-label="Search Player">
+      <button id="search-button" name="button" type="button" onclick="searchPlayerPressed()">Go!</button>
+    </form>
+    <div id="article-aside">
+      <article style="border-right: 5px solid black;">
+        <h3 id="headers">Player Profile</h3>
+        <div id="big-flex">
+          <figure>
+            <img src="images/nfl-logo.png" alt="NFL Logo" height="200px" width="200px">
+          </figure>
+          <div class="team-info">
+            <p>Name:</p>
+            <p>Age:</p>
+            <p>Height/Weight:</p>
+            <p>Position:</p>
+            <p>Number:</p>
+          </div>
+        </div>
+        <div id="button">
+          <button id="favorite-button" name="button" type="button" onclick="favoritePressed()">Favorite Player</button>
+        </div>
+      </article>
+      <aside>
+        <h3>Statistics</h3>
+      </aside>
+    </div>
     <script src="scripts/script.js"></script>
   </body>
 </main>

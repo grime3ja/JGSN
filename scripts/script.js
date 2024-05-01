@@ -16,3 +16,19 @@ function openPage() {
         window.location.href = page;
     }
 }
+
+function searchTeamPressed() {
+    // placeholder for when the search button is pressed
+}
+
+function searchPlayerPressed() {
+    // placeholder for when the search button is pressed
+}
+
+function favoritePressed() {
+    // placeholder for when the favorite button is pressed
+}
+
+function clearPressed() {
+    // placeholder for when the clear button is pressed
+}
