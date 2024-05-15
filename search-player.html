@@ -26,9 +26,19 @@
 <main>
   <body id="player">
     <!-- <h2>Search Player</h2> -->
-    <form class="search" role="search">
-      <input type="search" id="search-bar" name="search" type="search" placeholder="Search Player" aria-label="Search Player">
-      <button id="search-button" name="button" type="button" onclick="searchPlayerPressed()">Go!</button>
+    <form class="search" role="search" action="#">
+      <label for="position">Select Position:</label>
+      <select id="position" name="position">
+        <option value="qb"><a href="index.html">QB</a></option>
+        <option value="rb"><a href="search-team.html">RB</a></option>
+        <option value="wr">WR</option>
+        <option value="kp">K/P</option>
+        <option value="def">Defense</option>
+        <option value="ret">KR/PR</option>
+      </select>
+        <input type="search" id="search-bar" name="search" type="search" placeholder="Search Player" aria-label="Search Player">
+        <button id="search-button" name="button" type="button" onclick="searchPlayerPressed()">Go!</button>
+      </select>
     </form>
     <div id="article-aside">
       <article style="border-right: 5px solid black;">

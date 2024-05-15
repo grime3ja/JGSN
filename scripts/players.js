@@ -58,7 +58,7 @@ async function getPlayerData(searchTerm) {
     }
 }
 
-async function getPlayerStats(id) {
+async function getPlayerStats(id, position) {
     const url = 'https://api-american-football.p.rapidapi.com/players/statistics?season=2023&id=' + id;
     const options = {
         method: 'GET',
@@ -86,14 +86,18 @@ async function getPlayerStats(id) {
 window.onload = ("load", async () => {
     const currentURLSearch = window.location.search;
     const decoded = new URLSearchParams(currentURLSearch);
-    if (decoded.has("search")) {
+    if (decoded.has("search") && decoded.has("position")) {
         const items = decoded.getAll("search");
+        const position = decoded.getAll("position");
         sessionStorage.setItem("q", JSON.stringify(items));
+        sessionStorage.setItem("position", JSON.stringify(position));
         const q = sessionStorage.getItem("q");
+        const p = sessionStorage.getItem("position");
         const urlSPObj = new URLSearchParams();
         urlSPObj.append("search", q);
-        let id = await getPlayerData(JSON.parse(q)[0]);
-        console.log(id);
-        getPlayerStats(id);
+        urlSPObj.append("postion", p);
+        // let id = await getPlayerData(JSON.parse(q)[0]);
+        // console.log(id);
+        // getPlayerStats(id, p);
     }
 });

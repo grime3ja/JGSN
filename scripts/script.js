@@ -27,12 +27,15 @@ function searchTeamPressed() {
 }
 
 function searchPlayerPressed() {
+    let selection = document.getElementById("position").value;
+
     let searchText = document.getElementById('search-bar');
-    location.href = "./search-player.html?search=" + searchText.value;
+    location.href = "./search-player.html?search=" + searchText.value + "&position=" + selection;
     sessionStorage.setItem("q", searchText.value);
     const q = sessionStorage.getItem("q");
     const urlSPObj = new URLSearchParams();
     urlSPObj.append("search", q);
+    urlSPObj.append("position", page);
 }
 
 function clearPressed() {
