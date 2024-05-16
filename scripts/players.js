@@ -71,12 +71,61 @@ async function getPlayerStats(id, position) {
     try {
         const response = await fetch(url, options);
         const playerInfo = (await response.json()).response[0];
-        const stats = playerInfo.teams[0];
+        const team = playerInfo.teams[0].team.name;
+        const stats = playerInfo.teams[0].groups[0].statistics;
 
         let info = [];
-        info.push("Team: " + stats.team.name);
-        for (let stat of stats) {
-            console.log(stat);
+        info.push("Team: " + team);
+        switch (position) {
+            case "qb":
+                info.push("Passing Yards: " + stats[3].value);
+                info.push("Yards/Attempt: " + stats[4].value);
+                info.push("Yards/Game: " + stats[5].value);
+                info.push("Longest Pass: " + stats[6].value);
+                info.push("Completion %: " + stats[2].value);
+                info.push("Pass Touchdowns: " + stats[7].value);
+                info.push("Interceptions: " + stats[9].value);
+                info.push("Quarterback Rating: " + stats[13].value);
+                break;
+            
+            case "rb":
+                info.push("Rushing Yards: " + stats[1].value);
+                info.push("Yards/Attempt: " + stats[2].value);
+                info.push("Yards/Game: " + stats[6].value);
+                info.push("Longest Rush: " + stats[3].value);
+                info.push("Rushing Touchdowns: " + stats[5].value);
+                info.push("Fumbles: " + stats[7].value);
+                info.push("Fumbles Lost: " + stats[8].value);
+                break;
+            case "wr":
+                info.push("Receiving Yards: " + stats[2].value);
+                info.push("Receptions: " + stats[0].value);
+                info.push("Yards/Reception: " + stats[3].value);
+                info.push("Yards/Game: " + stats[7].value);
+                info.push("Longest Reception: " + stats[5].value);
+                info.push("Receptions Over 20 Yards: " + stats[6].value);
+                info.push("Receiving Touchdowns: " + stats[4].value);
+                break;
+            case "kp":
+
+                break;
+            case "def":
+
+                break;
+            case "ret":
+
+                break;
+            default:
+                info.push("No stats found");
+        }
+
+        let div = document.querySelector(".stats");
+        div.innerHTML = "";
+
+        for (let i = 0; i < info.length; i++) {
+            let p = document.createElement("p");
+            p.textContent = info[i];
+            div.appendChild(p);
         }
     } catch (error) {
         console.error(error);
@@ -96,8 +145,8 @@ window.onload = ("load", async () => {
         const urlSPObj = new URLSearchParams();
         urlSPObj.append("search", q);
         urlSPObj.append("postion", p);
-        // let id = await getPlayerData(JSON.parse(q)[0]);
-        // console.log(id);
-        // getPlayerStats(id, p);
+        let id = await getPlayerData(JSON.parse(q)[0]);
+        console.log(id);
+        getPlayerStats(id, JSON.parse(p)[0]);
     }
 });
