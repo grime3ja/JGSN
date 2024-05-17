@@ -72,7 +72,7 @@ async function getPlayerStats(id, position) {
         const response = await fetch(url, options);
         const playerInfo = (await response.json()).response[0];
         const team = playerInfo.teams[0].team.name;
-        const stats = playerInfo.teams[0].groups[0].statistics;
+        let stats = playerInfo.teams[0].groups[0].statistics;
 
         let info = [];
         info.push("Team: " + team);
@@ -106,11 +106,39 @@ async function getPlayerStats(id, position) {
                 info.push("Receptions Over 20 Yards: " + stats[6].value);
                 info.push("Receiving Touchdowns: " + stats[4].value);
                 break;
-            case "kp":
+            case "k":
+                stats = playerInfo.teams[0].groups[2].statistics;
+                info.push("Field Goals Made: " + stats[0].value);
+                info.push("Field Goals Attempted: " + stats[1].value);
+                info.push("Field Goal Percentage: " + stats[2].value);
+                info.push("Longest Field Goal: " + stats[3].value);
+                info.push("Extra Points Made: " + stats[9].value);
+                info.push("Extra Points Attempted: " + stats[10].value);
+                info.push("Extra Point Percentage: " + stats[11].value);
+                break;
+            
+            case "p":
+                stats = playerInfo.teams[0].groups[1].statistics;
 
+                info.push("Punts: " + stats[0].value);
+                info.push("Total Punt Yards: " + stats[1].value);
+                info.push("Net Average: " + stats[4].value);
+                info.push("Blocked Punts: " + stats[5].value);
+                info.push("Punts Inside 20: " + stats[6].value);
+                info.push("Touchbacks: " + stats[7].value);
                 break;
             case "def":
-
+                info.push("Solo Tackles: " + stats[0].value);
+                info.push("Total Tackles: " + stats[2].value);
+                info.push("Sacks: " + stats[3].value);
+                info.push("Tackles for Loss: " + stats[5].value);
+                info.push("Passes Defended: " + stats[6].value);
+                info.push("Interceptions: " + stats[7].value);
+                info.push("Interception Touchdowns: " + stats[10].value);
+                info.push("Forced Fumbles: " + stats[11].value);
+                info.push("Fumble Recoveries: " + stats[12].value);
+                info.push("Fumbles Recovered for Touchdowns: " + stats[13].value);
+                info.push("Blocked Kicks: " + stats[14].value);
                 break;
             case "ret":
 
