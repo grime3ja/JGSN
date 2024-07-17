@@ -119,7 +119,6 @@ async function getPlayerStats(id, position) {
             
             case "p":
                 stats = playerInfo.teams[0].groups[1].statistics;
-
                 info.push("Punts: " + stats[0].value);
                 info.push("Total Punt Yards: " + stats[1].value);
                 info.push("Net Average: " + stats[4].value);
@@ -141,7 +140,17 @@ async function getPlayerStats(id, position) {
                 info.push("Blocked Kicks: " + stats[14].value);
                 break;
             case "ret":
-
+                stats = playerInfo.teams[0].groups[4].statistics;
+                info.push("Kickoff Return Attempts: " + stats[0].value);
+                info.push("Kickoff Return Yards: " + stats[1].value);
+                info.push("Yards/Kickoff Return: " + stats[2].value);
+                info.push("Longest Kickoff Return: " + stats[3].value);
+                info.push("Kickoff Return Touchdowns: " + stats[4].value);
+                info.push("Punt Return Attempts: " + stats[5].value);
+                info.push("Punt Return Yards: " + stats[6].value);
+                info.push("Yards/Punt Return: " + stats[7].value);
+                info.push("Longest Punt Return: " + stats[8].value);
+                info.push("Punt Return Touchdowns: " + stats[9].value);
                 break;
             default:
                 info.push("No stats found");
@@ -158,6 +167,10 @@ async function getPlayerStats(id, position) {
     } catch (error) {
         console.error(error);
     }
+}
+
+async function checkPlayerData(id) {
+    // test for position
 }
 
 window.onload = ("load", async () => {
